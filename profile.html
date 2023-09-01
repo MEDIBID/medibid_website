@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MEDIBID</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		.nav-pills .nav-link.active {
+			background-color: grey;
+		}
+		body {
+			color: #0bb9c5;
+		}
+		.btn-light {
+            background-color: #0bb9c5;
+            border-color: #0bb9c5;
+            color: #ffffff;
+        }
+		.fixed-height {
+            height: 100vh;
+        }
+		@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+body {
+	background: #f9f9f9;
+	font-family:  sans-serif;
+}
+
+
+.shadow {
+	
+	box-shadow: 0 2px 10px #0bb9(0, 0, 0, 0.1) !important;
+}
+
+.profile-tab-nav {
+
+	min-width: 260px;
+}
+
+.tab-content {
+	flex: 1;
+	width: 100%;
+	
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+	width: 100%;
+	padding: 10px 15px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color :#0bb9c5;
+}
+.nav-pills a.nav-link i {
+	width: 10px;
+	color :#0bb9c5;
+}
+
+
+
+
+th, td {
+  padding: 15px 35px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #000;
+  
+   
+}
+
+
+		.nav-pills .nav-link.active {
+			background-color: grey;
+		}
+		body {
+			color: #0bb9c5;
+		}
+		.btn-light {
+            background-color: #0bb9c5;
+            border-color: #0bb9c5;
+            color: #ffffff;
+        }
+		.fixed-height {
+            height: 100vh;
+        }
+		@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+body {
+	background: #f9f9f9;
+	font-family:  sans-serif;
+}
+
+
+.shadow {
+	
+	box-shadow: 0 2px 10px #0bb9(0, 0, 0, 0.1) !important;
+}
+
+
+
+
+.tab-pane fade{
+	width: 100px;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+	width: 100%;
+	padding: 10px 15px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color :#0bb9c5;
+}
+.nav-pills a.nav-link i {
+	width: 10px;
+	color :#0bb9c5;
+}
+
+
+table {
+  width: 104%;
+  border-collapse: collapse;
+  margin-left: -18px; /* Adjust this value as needed */
+}
+
+
+/* Set different widths for the first two columns */
+th:nth-child(1),
+td:nth-child(1),
+th:nth-child(2),
+td:nth-child(2){
+  width: 386px;
+  
+}
+
+/* Set a different width for the third column */
+th:nth-child(3),
+td:nth-child(3) {
+  width: 210px;
+}
+
+th:nth-child(4),
+td:nth-child(4){
+  width: 97px;
+}
+th:nth-child(5),
+td:nth-child(5){
+  width: 90px;
+  text-align: center;
+}
+th:nth-child(6),
+td:nth-child(6){
+  width: 90px;
+}
+th:nth-child(7),
+td:nth-child(7){
+  width: 70px;
+}
+th:nth-child(8),
+td:nth-child(8) {
+  width: 133px;
+  text-align: center; /* Align the content (text, images, etc.) to the center */
+}
+
+
+th {
+  
+  color: #0bb9c5;
+  
+  
+
+}
+/* ... (previous code) */
+
+/* Hide the details row by default */
+.details-row {
+  display: none;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Show the details row when 'show-details' class is applied */
+.show-details .details-row {
+  display: table-row;
+}
+
+.view-details-btn {
+  background-color: #0bb9c5;
+  color: #ffffff;
+  padding: 8px 12px;
+  border: #f2f2f2;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: #f2f2f2; /* Add this line to remove the default focus outline */
+}
+
+.view-details-btn:hover {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.view-details-btn:focus {
+  box-shadow: 0 2px 10px #0bb9(0, 0, 0, 0.1) !important;
+}
+
+
+ 
+table.inner-table {
+  /* Add your styles for the inner tables here */
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: 3px;
+ 
+}
+
+
+/* Style for table cells in the inner tables */
+table.inner-table td {
+ 
+  padding: 8px;
+  border: 1px solid #ccc;
+  
+} 
+	</style>
+</head>
+<body class="fixed-height">
+	<section class="py-5 my-5">
+		<div class="container">
+			<h1 class="mb-5">PROFILE</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<h4 class="text-center"></h4>
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
+							<i class="fa fa-home text-center mr-1"></i> 
+							Account
+						</a>
+						
+						<a class="nav-link" id="reserve-tab" data-toggle="pill" href="#reserve" role="tab" aria-controls="reserve" aria-selected="false">
+							<i class="fa fa-user text-center mr-1"></i> 
+							Reserve
+						</a>
+						<a class="nav-link" id="logout-tab" data-toggle="pill" href="#logout" role="tab" aria-controls="logout" aria-selected="false">
+							<i class="fa fa-user text-center mr-1"></i> 
+							Log out
+						</a>
+					</div>
+				</div>
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+						<h3 class="mb-4">Account Settings</h3>
+						<div class="row">
+
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>Phone number</label>
+								  	<input id="phNo" type="text" class="form-control" value="">
+								</div>
+							</div>
+		
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label> Name</label>
+								  	<input id="username" type="text" class="form-control" value="">
+								</div>
+							</div>
+						</div>
+						<div>
+							<button id="updateBtn" class="btn btn-light">Update</button>
+
+							<button class="btn btn-light">Cancel</button>
+						</div>
+					</div>
+					
+					<div class="tab-pane fade" id="reserve" role="tabpanel" aria-labelledby="reserve-tab">
+            <h3 class="mb-4">Reservation History</h3>
+						<div class="row">
+							<link rel="stylesheet" type="text/css" href="style.css">
+							<div class="container">
+							  <table id="reservationTable" class="reservation-table">
+								
+							  </table>
+							</div>
+						  </div>
+						  
+					</div>
+					<div class="tab-pane fade" id="logout" role="tabpanel" aria-labelledby="logout-tab">
+						<h3 class="mb-4">Log Out</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<p>Are you sure you want to log out?</p>
+									<button class="btn btn-light"  onclick=logout()>Yes</button>
+									<button class="btn btn-light" onclick=logIn() >No </button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+ 
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+	<script>
+  
+		
+   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+  apiKey: "AIzaSyBr6DfSQdrr8nj7l5_zJXZhKJMk1puWbR0",
+  authDomain: "fir-73e54.firebaseapp.com",
+  databaseURL: "https://fir-73e54-default-rtdb.firebaseio.com",
+  projectId: "fir-73e54",
+  storageBucket: "fir-73e54.appspot.com",
+  messagingSenderId: "578007925758",
+  appId: "1:578007925758:web:df4216c180067bc3dd76af",
+  measurementId: "G-BBB402HQTG"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the Firebase Realtime Database
+const database = firebase.database();
+
+window.addEventListener('load', function() {
+			updateReservationStatus();
+});
+		
+function updateReservationStatus() {
+  const reservationRef = database.ref('reservation');
+  const medicalStoreRef = database.ref('medical store');
+
+  // Get the current timestamp in milliseconds
+  const currentTime = Date.now();
+
+  reservationRef.once('value')
+    .then((snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const reservationId = childSnapshot.key;
+        const reservation = childSnapshot.val();
+        const reservationTimestamp = reservation.timestamp;
+
+        // Check if the reservation is older than 24 hrs and has a "pending" status
+       
+            if (reservation.status === 'pending' && currentTime - reservationTimestamp >= 24 * 60 * 60 * 1000) {
+            // Update the reservation status to "cancelled"
+            reservationRef.child(reservationId).child('status').set('cancelled')
+              .then(() => {
+                console.log('Reservation status updated to cancelled for reservation:', reservationId);
+              })
+              .catch((error) => {
+                console.error('Error updating reservation status:', error);
+              });
+			  reservationRef.child(reservationId).child('timestamp').set('null')
+              .then(() => {
+                console.log('Reservation time updated:', reservationId);
+              })
+              .catch((error) => {
+                console.error('Error updating reservation status:', error);
+              });
+			  
+          
+          // Find the corresponding node in the medical store with reservation.shopId = email node
+        
+
+medicalStoreRef.once('value')
+  .then((snapshot) => {
+    const medicalStoreData = snapshot.val();
+    const matchingKeys = Object.keys(medicalStoreData).filter((key) => {
+      return medicalStoreData[key].email === reservation.shopId;
+    });
+
+    if (matchingKeys.length > 0) {
+matchingKeys.forEach((matchingKey) => {
+const productData = medicalStoreData[matchingKey].product;
+if (productData && productData.hasOwnProperty(reservation.medicineName)) {
+  const productRef = database.ref(`medical store/${matchingKey}/product/${reservation.medicineName}`);
+  
+  // Get the current quantity from the database
+  const previousQty = productData[reservation.medicineName].qty;
+  const updatedQty= previousQty+reservation.qty;
+  console.log(updatedQty)
+  // Update the quantity to the new value (e.g., decreasedQty)
+  productRef.update({ qty: updatedQty })
+    .then(() => {
+      console.log('Quantity successfully updated in the database');
+      // Code for handling success or performing additional actions
+    })
+    .catch((error) => {
+      console.error('Error updating quantity in the database:', error);
+      // Code for handling errors
+    });
+
+ 
+}
+});
+}
+else {
+      console.error('No matching keys found in the medical store for the given email.');
+      // Code for handling no matching keys case
+    }
+  })
+  .catch((error) => {
+    console.error('Error retrieving data from the medical store:', error);
+    // Code for handling errors
+  });
+        }
+      });
+    })
+    .catch((error) => {
+      console.error('Error retrieving reservation data:', error);
+    });
+}
+
+// Call the function to update reservation status every 24hrs
+setInterval(updateReservationStatus, 24 * 60* 60 * 1000);
+
+	// Retrieve the mobile number from local storage
+	  const mobileNumber = localStorage.getItem('mobileNumber');
+	  
+	   const usersRef = firebase.database().ref('RegisteredUsers');
+		usersRef.once('value', (snapshot) => {
+		  const users = snapshot.val();
+		  if (users && users[mobileNumber]) {
+			// Mobile number exists in the database
+			const mobileNumber = localStorage.getItem('mobileNumber');
+			const phNoInput = document.getElementById('phNo');
+			if (phNoInput) {
+ 			 	phNoInput.value = mobileNumber;
+			}
+
+			console.log('Mobile number exists:', mobileNumber);
+// Retrieve the input field element
+const usernameInput = document.getElementById('username');
+
+// Retrieve the update button element
+const updateBtn = document.getElementById('updateBtn');
+
+// Add event listener to the update button
+updateBtn.addEventListener('click', function() {
+  // Retrieve the updated name from the input field
+  const updatedName = usernameInput.value;
+
+  // Update the name in Firebase
+  const mobileNumber = localStorage.getItem('mobileNumber');
+  const usersRef = firebase.database().ref('RegisteredUsers');
+  usersRef.child(mobileNumber).update({ name: updatedName })
+    .then(() => {
+      console.log('Name updated successfully:', updatedName);
+    })
+    .catch((error) => {
+      console.error('Failed to update name:', error);
+    });
+});
+
+// Retrieve the username from Firebase and set it as the value of the input field
+
+const usersRef = firebase.database().ref('RegisteredUsers');
+usersRef.child(mobileNumber).once('value')
+  .then((snapshot) => {
+    const userData = snapshot.val();
+    if (userData && userData.name) {
+      usernameInput.value = userData.name;
+    }
+  })
+  .catch((error) => {
+    console.error('Failed to retrieve username:', error);
+  });
+
+
+  
+  } else {
+			  // Mobile number does not exist in the database
+			  console.log('Mobile number does not exist:', mobileNumber);
+  
+			  // Add the mobile number to the database
+			  usersRef.child(mobileNumber).set(true)
+				.then(() => {
+				  console.log('Mobile number added to the database:', mobileNumber);
+				})
+				.catch((error) => {
+				  console.error('Error adding mobile number to the database:', error);
+				});
+			}
+		});
+  
+		const reservationRef = firebase.database().ref('reservation');
+reservationRef.orderByChild('phNo').equalTo(mobileNumber).once('value', (snapshot) => {
+  const reservations = snapshot.val();
+  if (reservations) {
+    // Sort reservations by date and time in descending order
+	const sortedReservations = Object.keys(reservations)
+  .map((key) => ({ key, ...reservations[key] }))
+  .sort((a, b) => {
+    const dateTimeA = new Date(`${a.date} ${a.time}`);
+    const dateTimeB = new Date(`${b.date} ${b.time}`);
+    return dateTimeB - dateTimeA; // Sort by combined date and time in descending order
+  });
+
+
+    // Create a table to display the fetched details
+    const table = document.createElement('table');
+    
+
+    // Iterate through the sorted reservations
+    sortedReservations.forEach((reservation) => {
+      const { date, key, medicineName, shopName,place, time, qty, price, status } = reservation;
+
+      // Convert the date format from yyyy-mm-dd to dd-mm-yyyy
+      const formattedDate = date.split('-').reverse().join('-');
+
+    // Get the reservation timestamp from the reservation object
+	const reservationTimestamp = reservation.timestamp;
+let remainingTimeFormatted; // Declare the variable outside the conditional block
+
+// Check if reservation.timestamp is null
+if (reservationTimestamp === "null") {
+  remainingTimeFormatted = "-"; // Set to "-" if timestamp is null
+} else {
+  // Calculate the remaining time in milliseconds
+  const expirationTime = reservationTimestamp + 86400000; // Adding 24 hours in milliseconds
+  // Calculate the remaining time in hours, minutes, and seconds
+  const remainingTime = expirationTime - Date.now();
+  const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60));
+  const remainingMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+  const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+  // Format the remaining time as hh:mm:ss
+  remainingTimeFormatted = `${remainingHours.toString().padStart(2, '0')}:${remainingMinutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
+
+
+
+
+const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${formattedDate}</td>
+    <td class="product-row">${medicineName}</td>
+    <td><button class="view-details-btn">View Details</button></td>
+  `;
+
+  // Append the main row to the table
+  table.appendChild(row);
+
+  // Create the details row for each reservation
+  const detailsRow = document.createElement('tr');
+  detailsRow.style.display = 'none'; // Hide the details row by default
+  detailsRow.innerHTML = `
+  <td colspan="3"> <!-- Add classes for details -->
+    <table class="inner-table"> <!-- Nested table for shop details -->
+      <tr>
+        <td>Shop Name:</td>
+        <td><span class="shop-name">${shopName}</span>
+    <span class="place">${place}</span></td>
+      </tr>
+      
+   
+      <tr>
+        <td>Time:</td>
+        <td>${time}</td>
+      </tr>
+      <tr>
+        <td>Quantity:</td>
+        <td>${qty}</td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>${price}</td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td>${status}</td>
+      </tr>
+      <tr>
+        <td>Remaining Time:</td>
+        <td>${remainingTimeFormatted}</td>
+      </tr>
+    </table>
+  </td>
+`;
+
+  // Append the details row to the table
+  table.appendChild(detailsRow);
+
+  // Add click event listener to "View Details" button
+  const viewDetailsButton = row.querySelector('.view-details-btn');
+  viewDetailsButton.addEventListener('click', function () {
+    // Toggle the visibility of the details row by changing the display property
+    detailsRow.style.display = detailsRow.style.display === 'none' ? 'table-row' : 'none';
+  });
+});
+    // Display the table on the webpage
+    const reservationTableElement = document.getElementById('reservationTable');
+    reservationTableElement.appendChild(table);
+  } else {
+    console.log('No reservations found for the registered mobile number');
+  }
+});
+
+function logout() {
+  localStorage.removeItem('token');
+
+  // Set the profile state to 'login'
+  localStorage.setItem('isLoggedIn', 'false');
+
+ // Go back to the former window
+ window.history.back();
+
+  
+}
+function logIn(){
+	window.history.back();
+}
+// Retrieve the table element
+const reservationTableElement = document.getElementById('reservationTable');
+
+// Add event listeners to each product row in the table
+reservationTableElement.addEventListener('click', function (event) {
+  const target = event.target;
+  if (target.classList.contains('product-row')) {
+    const detailsRow = target.closest('.details-row');
+    if (detailsRow) {
+      detailsRow.classList.toggle('show-details');
+    }
+  }
+
+  // Add code here to show reservation details when "View Details" button is clicked
+  if (target.classList.contains('view-details-btn')) {
+    const row = target.closest('tr');
+    const detailsRow = row.querySelector('.details-row');
+    detailsRow.classList.toggle('show-details');
+  }
+});
+
+
+</script>
+
+
+<style>
+  /* Set table layout to fixed to ensure consistent column widths */
+  
+  
+</style>
+
+
+
+  
+    
+  
+</body>
+</html>

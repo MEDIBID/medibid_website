@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+   
+    <title>MEDIBID</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://icons.getbootstrap.com/" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+   
+  
+
+ 
+   
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/awesomplete@1.1.3/awesomplete.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mysql/2.18.1/mysql.js"></script>
+    <style>
+      /* CSS styles for the location popup */
+     
+      
+    #btn{
+        margin-top:35px;
+        background-color: #0bb9c5;
+        color: #000000;
+      }
+      
+ 
+#bar{
+  padding: 18px;
+	background-color: #0bb9c5;
+  display: flex;
+  justify-content: flex-end;
+}
+@keyframes blink-animation {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+#popup {
+  display: none;
+  margin-left: 96px;
+  animation: blink-animation 1s infinite;
+  /* Add your desired styles */
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  width: 630px;
+  height: 442px;
+  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  
+}
+form {
+  margin-top: 25px;
+  margin-left: 108px;
+}
+#verificationCode{
+  width: 160px;
+  
+}
+.popup button {
+  padding: 6px 10px;
+  font-size: 11px;
+  background-color: #0bb9c5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #0bb9c5;
+}
+.popup h4{
+  color: #000000;
+  
+}
+#recaptcha-container {
+  margin-bottom: 10px;
+}
+
+/* Style the search suggestions */
+
+.awesomplete{
+  color: #ffffff;
+}
+
+ul.awesomplete {
+  margin-top: 200px !important; /* Adjust the margin-top value as needed */
+  
+}
+
+
+
+
+
+
+.awesomplete li:hover {
+  background-color: #989898;
+}
+
+
+
+
+
+#locationSearch {
+  position: fixed;
+  top: 35px;
+  left: 80px;
+  color: white;
+  background-color: transparent;
+  border-color: #0bb9c5;
+  margin-top: 43px;
+  margin-left: -42px;
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  outline: none;
+}
+#detectLocationButton {
+  position: fixed;
+  top: 80px;
+  left: 290px;
+  color: white;
+}
+
+.fa-map-marker {
+  font-size: 27px; /* Replace '24px' with your desired size */
+}
+.fa-map-marker:hover::after {
+  content: "Detect Location";
+  top: -30px; /* Adjust the position of the text */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent; /* Define the background color */
+  color: #ffffff; /* Define the text color */
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 20px; /* Define the font size */
+  white-space: nowrap;
+}
+#locationSearch::placeholder {
+  color: rgb(255, 255, 255); /* Replace 'red' with your desired color */
+  font-size: small;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.awesomplete-container {
+  position: relative;
+  display: inline-block; /* Ensure it doesn't occupy full width */
+  left: -80px;
+}
+input.my-awesomplete + [id^="awesomplete_list_"]:not([id$="-ul"]) {
+    margin-top: 60px;
+    padding: 11px;
+    width: 100px; /* Adjust the width as needed */
+  }
+
+  /* Style for selected suggestion item in the specific Awesomplete */
+  input.my-awesomplete + [id^="awesomplete_list_"] li[aria-selected="true"] {
+    background-color: #646464;
+  }
+
+  </style>
+</head>
+<body>
+ 
+  
+    <div id="loginPopup" class="popup">
+      <form id="loginForm"><br><br>
+        <h4 >Enter number to create account</h4>
+        <input type="text" id="number" placeholder="+91**********">
+        <div id="recaptcha-container"></div>
+        <button type="button" onclick="phoneAuth();">Send Code</button>
+        <br><br>
+        <h4 >Enter Verification code</h4>
+        <input type="text" id="verificationCode" placeholder="Enter code">
+        <button type="button" onclick="codeVerify();">Verify Code</button>
+      </form>
+    </div>
+  
+   
+    
+
+  
+  
+  <!-- Rest of your HTML content -->
+  <div class="bar" id="bar"></div>
+  <!--login form-->
+  
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav" >
+                         
+                          <li class="scroll-to-section"><a href="#bar">Home</a></li>
+                          <li class="scroll-to-section"><a href="#about">About</a></li>
+                          <li class="scroll-to-section"><a href="#footer">Contact Us</a></li>
+                          <li class="scroll-to-section"><a href="#" id="usernameText">LOGIN</a></li>
+                      </ul> 
+                        
+                      
+                      
+                      
+                      <div id="loc">
+                        
+                        
+                        
+                        <div class="awesomplete-container">
+                          <input type="text"  class="my-awesomplete" onchange="searchPlaces();" id="locationSearch" placeholder="Search for location">
+                          <div class="dropdown-list" id="awesomplete_list_1"></div>
+                        </div>
+                        
+
+                          <a href="#" id="detectLocationButton" onclick="getLocation()"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                          <ul id="locationSearchList" class="awesomplete-list"></ul>
+                      </div>
+                      
+                      
+
+                    </head>
+                    
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+   <!-- ***** search bar ***** -->
+  
+   <section class="section main-banner" id="top" data-section="section1">
+    
+    <video autoplay muted loop id="bg-video">
+        
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-dropping-medication-16533-large.mp4" type="video/mp4" />
+    </video>
+       
+    <div class="video-overlay header-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              
+              <div class="caption">
+                
+                <div class="search-container">
+                 
+                  <input type="text" onchange="populateSearchContainer();" id="search-input" class="search-input" placeholder="Search for medicine...">
+                  <a class="search-button" id="search-button"><i class="bi bi-search"></i></a>
+                </div>
+            <h2>Welcome to MEDIBID</h2>
+            <h4>Find Your Medicines Locally</h4>
+        </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+   
+  <script>
+
+window.addEventListener('load', function() {
+  console.log('Page loaded!');
+
+  // Create a script element
+  var script = document.createElement('script');
+
+  // Set the source path of your script
+  script.src = 'script.js';
+
+  // Append the script element to the document body
+  document.body.appendChild(script);
+});
+
+ 
+
+
+ 
+const firebaseConfig = {
+  apiKey: "AIzaSyBr6DfSQdrr8nj7l5_zJXZhKJMk1puWbR0",
+  authDomain: "fir-73e54.firebaseapp.com",
+  databaseURL: "https://fir-73e54-default-rtdb.firebaseio.com",
+  projectId: "fir-73e54",
+  storageBucket: "fir-73e54.appspot.com",
+  messagingSenderId: "578007925758",
+  appId: "1:578007925758:web:df4216c180067bc3dd76af",
+  measurementId: "G-BBB402HQTG"
+};
+firebase.initializeApp(firebaseConfig);
+
+
+// script.js (or otherpage.js)
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Retrieve the stored selected location
+  const searchValue = localStorage.getItem('searchValue');
+  if (searchValue) {
+    locationSearch.value = searchValue;
+  }
+  // Retrieve stored login state
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (isLoggedIn === 'true') {
+    // User is logged in
+    document.getElementById('usernameText').textContent = 'PROFILE';
+  } else {
+    document.getElementById('usernameText').textContent = 'LOGIN';
+  }
+ 
+  updateReservationStatus()
+});
+
+// ... Rest of your script
+
+
+  // Function to check and update reservation status
+  function updateReservationStatus() {
+  const reservationRef = database.ref('reservation');
+  const medicalStoreRef = database.ref('medical store');
+
+  // Get the current timestamp in milliseconds
+  const currentTime = Date.now();
+
+  reservationRef.once('value')
+    .then((snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const reservationId = childSnapshot.key;
+        const reservation = childSnapshot.val();
+        const reservationTimestamp = reservation.timestamp;
+
+        // Check if the reservation is older than 24 hrs and has a "pending" status
+       
+            if (reservation.status === 'pending' && currentTime - reservationTimestamp >= 24 * 60 * 60 * 1000) {
+            // Update the reservation status to "cancelled"
+            reservationRef.child(reservationId).child('status').set('cancelled')
+              .then(() => {
+                console.log('Reservation status updated to cancelled for reservation:', reservationId);
+              })
+              .catch((error) => {
+                console.error('Error updating reservation status:', error);
+              });
+			  reservationRef.child(reservationId).child('timestamp').set('null')
+              .then(() => {
+                console.log('Reservation time updated:', reservationId);
+              })
+              .catch((error) => {
+                console.error('Error updating reservation status:', error);
+              });
+			  
+          
+          // Find the corresponding node in the medical store with reservation.shopId = email node
+        
+
+medicalStoreRef.once('value')
+  .then((snapshot) => {
+    const medicalStoreData = snapshot.val();
+    const matchingKeys = Object.keys(medicalStoreData).filter((key) => {
+      return medicalStoreData[key].email === reservation.shopId;
+    });
+
+    if (matchingKeys.length > 0) {
+matchingKeys.forEach((matchingKey) => {
+const productData = medicalStoreData[matchingKey].product;
+if (productData && productData.hasOwnProperty(reservation.medicineName)) {
+  const productRef = database.ref(`medical store/${matchingKey}/product/${reservation.medicineName}`);
+  
+  // Get the current quantity from the database
+  const previousQty = productData[reservation.medicineName].qty;
+  const updatedQty= previousQty+reservation.qty;
+  console.log(updatedQty)
+  // Update the quantity to the new value (e.g., decreasedQty)
+  productRef.update({ qty: updatedQty })
+    .then(() => {
+      console.log('Quantity successfully updated in the database');
+      // Code for handling success or performing additional actions
+    })
+    .catch((error) => {
+      console.error('Error updating quantity in the database:', error);
+      // Code for handling errors
+    });
+
+ 
+}
+});
+}
+else {
+      console.error('No matching keys found in the medical store for the given email.');
+      // Code for handling no matching keys case
+    }
+  })
+  .catch((error) => {
+    console.error('Error retrieving data from the medical store:', error);
+    // Code for handling errors
+  });
+        }
+      });
+    })
+    .catch((error) => {
+      console.error('Error retrieving reservation data:', error);
+    });
+}
+
+// Call the function to update reservation status every 24hrs
+setInterval(updateReservationStatus, 24*60* 60 * 1000);
+
+
+function showSearch() {
+  const locationSearch = document.getElementById("locationSearch");
+
+  // Query Firebase database to retrieve all medical shops
+  const medicalShopsRef = firebase.database().ref("medical store");
+
+  // Retrieve places from medical store
+  medicalShopsRef.once("value")
+    .then((snapshot) => {
+      const medicalShops = snapshot.val();
+      const places = Object.values(medicalShops).map(shop => shop.place);
+
+      // Remove duplicate places
+      const uniquePlaces = Array.from(new Set(places));
+
+      // Initialize Awesomplete on the search input element
+      const awesomplete = new Awesomplete(locationSearch, {
+        list: uniquePlaces,
+        minChars: 1, // Minimum number of characters required to show suggestions
+      });
+
+      // Add input event listener to update suggestions as the user types
+      locationSearch.addEventListener('input', () => {
+        const inputText = locationSearch.value.toLowerCase();
+        const filteredPlaces = uniquePlaces.filter(place =>
+          place.toLowerCase().startsWith(inputText)
+        );
+        awesomplete.list = filteredPlaces;
+        
+      });
+
+      // Add event listener when a location is selected from the dropdown
+      locationSearch.addEventListener('awesomplete-selectcomplete', function (event) {
+        const selectedLocation = event.text.value;
+        // Save the selected location to localStorage
+        localStorage.setItem("searchValue", locationSearch.value);
+       // Save the selected location
+      });
+
+      // Apply margin-top to Awesomplete dropdown
+      awesomplete.container.style.setProperty('--menu-margin-top', '100px'); // Adjust the margin-top value as needed
+    })
+    .catch((error) => {
+      console.error("Error retrieving medical shops:", error);
+    });
+}
+
+showSearch();
+
+const medicalShopsRef = firebase.database().ref("medical store");
+var nearbyMedicalShops = [];
+
+function searchPlaces() {
+  
+  const place = document.getElementById("locationSearch").value;
+  
+
+  // Check if a location has been selected and it matches the input field value
+  if (place && place.toLowerCase() === place.toLowerCase()) {
+    // Query Firebase database to retrieve all medical shops
+    const medicalShopsRef = firebase.database().ref("medical store");
+
+    // Retrieve places from medical store
+    medicalShopsRef.once("value")
+      .then((snapshot) => {
+        const medicalShops = snapshot.val();
+
+        // Find the selected place in the medical shops data
+        const selectedShop = Object.values(medicalShops).find(shop => shop.place.toLowerCase() === place.toLowerCase());
+
+        // If the selected place is found, call showPosition with its latitude and longitude
+        if (selectedShop && selectedShop.location && selectedShop.location.latitude && selectedShop.location.longitude) {
+          const userLatitude = selectedShop.location.latitude;
+          const userLongitude = selectedShop.location.longitude;
+          console.log(userLatitude,userLongitude)
+          nearbyMedicalShops.length = 0;
+          showPosition(userLatitude, userLongitude); // Call showPosition with the latitude and longitude
+          
+        } 
+      })
+      .catch((error) => {
+        console.error("Error retrieving medical shops:", error);
+      });
+  } 
+ 
+}
+
+
+function getLocation() {
+  if (navigator.geolocation) {
+    // If Geolocation is supported by the browser, call getCurrentPosition to get the user's current position
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // Call showPosition with the user's latitude and longitude
+        //const userLatitude=9.726994709957554;
+        //const userLongitude= 76.72613768494631;
+        const userLatitude =position.coords.latitude ;
+        const userLongitude = position.coords.longitude;
+        console.log(userLatitude, userLongitude);
+
+        // Clear the nearbyMedicalShops array before calling showPosition
+        nearbyMedicalShops.length = 0;
+        showPosition(userLatitude, userLongitude);
+      },
+      showError
+    );
+  } else {
+    // If Geolocation is not supported, display an alert message
+    alert("Geolocation is not supported by this browser.");
+  }
+  console.log(nearbyMedicalShops)
+  // Save the selected location to localStorage
+  
+}
+
+function showPosition(userLatitude, userLongitude) {
+  // Make API request
+  const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${userLatitude}&lon=${userLongitude}`;
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const userLocation = data.display_name;
+      const resultElement = document.getElementById('locationSearch');
+
+      // Query Firebase database to retrieve all medical shops
+      // Filter and retrieve nearby medical shops
+      medicalShopsRef.once("value")
+        .then((snapshot) => {
+          nearbyMedicalShops.length = 0; // Clear the nearbyMedicalShops array
+          const medicalShops = snapshot.val();
+
+          // Iterate through each medical shop
+          for (const key in medicalShops) {
+            if (medicalShops.hasOwnProperty(key)) {
+              const shop = medicalShops[key];
+
+              // Calculate distance between user's location and shop's location
+              const shopLatitude = shop.location.latitude;
+              const shopLongitude = shop.location.longitude;
+              const distance = calculateDistance(userLatitude, userLongitude, shopLatitude, shopLongitude);
+
+              const radiusInKm = 10;
+              // Check if shop is within the defined radius
+              if (distance <= radiusInKm) {
+                nearbyMedicalShops.push(shop);
+              }
+            }
+          }
+
+          // Update the HTML with the nearby medical location
+          if (nearbyMedicalShops.length > 0) {
+            nearbyMedicalShops.sort((a, b) => a.distance - b.distance); // Sort the nearbyMedicalShops array based on distance
+            const nearestShop = nearbyMedicalShops[0];
+            resultElement.value = nearestShop.place;
+          } else {
+            alert("Unable to detect location.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error retrieving medical shops:", error);
+        });
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    });
+}
+
+
+
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+      }
+    }
+  
+       // Radius for filtering nearby medical shops (in kilometers)
+  
+  
+  
+  // Function to calculate distance between two sets of latitude and longitude coordinates using the Haversine formula
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const earthRadiusKm = 6371;
+    const dLat = degreesToRadians(lat2 - lat1);
+    const dLon = degreesToRadians(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = earthRadiusKm * c;
+    return distance;
+  }
+  
+  // Function to convert degrees to radians
+  function degreesToRadians(degrees) {
+    return degrees * (Math.PI / 180);
+  }
+         
+
+const database = firebase.database();
+const searchValue = document.getElementById('search-input');
+
+function populateSearchContainer() {
+  // Retrieve data from the Realtime Database
+  database.ref('medical record').once('value', (snapshot) => {
+    const searchData = new Set(); // Use a Set to store unique values
+
+    snapshot.forEach((childSnapshot) => {
+      const medicineNode = childSnapshot.val();
+      Object.keys(medicineNode).forEach((medicineKey) => {
+        const lowercaseMedicineKey = medicineKey.toLowerCase();
+        searchData.add(lowercaseMedicineKey); // Add value to the Set
+      });
+    });
+
+    // Convert Set to array for Awesomplete
+    const searchDataArray = Array.from(searchData);
+
+    // Initialize Awesomplete on the search input element
+    const awesomplete = new Awesomplete(searchValue, {
+      list: searchDataArray,
+      minChars: 1, // Minimum number of characters required to show suggestions
+    });
+
+    // Update suggestions as you type
+    searchValue.addEventListener('input', () => {
+      const inputText = searchValue.value.toLowerCase();
+      const filteredData = searchDataArray.filter((item) =>
+      item.toLowerCase().includes(inputText)
+
+      );
+      awesomplete.list = filteredData;
+    });
+    //awesompleteSearchValue.container.classList.add('search-value-list');
+  }, (error) => {
+    console.log('Error fetching data from Firebase:', error);
+  });
+  //awesompleteSearchValue.container.classList.add('search-value-list');
+}
+
+populateSearchContainer();
+
+//LOGOUT
+// Check the profile state in localStorage
+
+
+
+//login popup
+
+
+  
+      const usernameText = document.getElementById('usernameText');
+      const loginPopup = document.getElementById('loginPopup');
+  
+      usernameText.addEventListener('click', function(event) {
+        event.preventDefault();
+        loginPopup.style.display = 'block';
+      });
+  
+      window.addEventListener('click', function(event) {
+        if (event.target !== usernameText && event.target !== loginPopup && !loginPopup.contains(event.target)) {
+          loginPopup.style.display = 'none';
+        }
+      });
+  
+      // Rest of your Firebase phone authentication code
+      window.onload = function() {
+      render();
+    };
+
+    function render() {
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+      recaptchaVerifier.render()
+        .catch(function(error) {
+          console.error('Error rendering reCAPTCHA:', error);
+        });
+    }
+
+    function phoneAuth() {
+      var number = document.getElementById('number').value;
+      firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier)
+        .then(function(confirmationResult) {
+          window.confirmationResult = confirmationResult;
+          console.log(confirmationResult);
+          alert('Message Sent');
+        })
+        .catch(function(error) {
+          console.error('Phone authentication error:', error);
+          alert(error.message);
+        });
+    }
+   
+    function codeVerify() {
+      const code = document.getElementById('verificationCode').value;
+      const confirmationResult = window.confirmationResult;
+      confirmationResult.confirm(code)
+      .then(function(result) {
+          alert('Successfully Login');
+          var user = result.user;
+          console.log(user);
+
+          // Close the popup and change "LOGIN" to "PROFILE"
+          loginPopup.style.display = 'none';
+          usernameText.textContent = 'PROFILE';
+          localStorage.setItem('isLoggedIn', 'true');
+          if (usernameText.textContent === 'PROFILE') {
+          const mobileNumber = document.getElementById('number').value;
+          
+          localStorage.setItem('mobileNumber', mobileNumber);
+          console.log(mobileNumber)
+          }
+        })
+        .catch(function(error) {
+          console.error('Verification code error:', error);
+          alert("Invalid Code");
+        });
+    }
+    usernameText.addEventListener('click', function(event) {
+  event.preventDefault();
+  if (usernameText.textContent === 'PROFILE') {
+    // Load profile.html
+    window.location.href = 'profile.html';
+  
+  } 
+});
+
+
+    
+document.getElementById("search-button").addEventListener("click", function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const searchInput = document.getElementById("search-input").value.toLowerCase();
+  const selectedLocation = localStorage.getItem("searchValue"); // Retrieve the selected location
+  const locationSearchValue = document.getElementById("locationSearch").value;
+  localStorage.setItem("searchValue", locationSearchValue);
+  console.log(locationSearchValue)
+
+  if (searchInput.trim() !== "") {
+    if (locationSearchValue) { // Check if a location has been selected
+      // Save the selected location to localStorage
+      localStorage.setItem("selectedLocation", selectedLocation);
+
+      // Save the nearbyMedicalShops to localStorage
+      localStorage.setItem("nearbyMedicalShops", JSON.stringify(nearbyMedicalShops));
+
+      // Redirect to another HTML page with both selectedLocation and searchInput as URL parameters
+      var encodedSearchInputValue = encodeURIComponent(searchInput);
+      var encodedSelectedLocation = encodeURIComponent(locationSearchValue);
+      window.location.href = 'anotherpage.html?search=' + encodedSearchInputValue + '&location=' + encodedSelectedLocation;
+    } else {
+      alert("Please select a location");
+    }
+  } else {
+    alert("Please enter a search input.");
+  }
+});
+
+
+
+
+// Check if the location is set, show alert if not
+
+
+
+      
+     
+     
+    </script>
+<section class="contact-us" id="contact">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-9 align-self-center">
+        <div class="row">
+          <div class="col-lg-12">
+            <form id="about" >
+              <div class="row">
+                <h1 style="color: #0bb9c5; font-size: 50px; margin-left: 380px; margin-top: 180px;">MEDIBID</h1>
+                <p style="color: #ffffff; font-size: 18px;"><br><br>MEDIBID is an innovative online platform that helps users find the availability of medicines in nearby medical shops.
+                  With the increasing demand for convenient access to essential medications, MEDIBID serves as a one-stop solution 
+                  for individuals seeking specific medicines.<br><br><br>
+                  Please note that the availability and accuracy of medicine information on MEDIBID depend on the data provided by the medical shops and may be subject to changes. Users are advised to contact the respective medical shops directly for the most up-to-date information on medicine availability.
+      
+                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <h1 id="contact" style="color: #0bb9c5; margin-top: 180px; margin-left: 380px;">CONTACT US</h1>
+        <div class="col-lg-4">
+         <div class="right-info" style="margin-top: 40px;">
+            <ul>
+              <li>
+                <h6>Phone Number</h6>
+                <span>+91-8281542361</span>
+                <span>+91-9778296087</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="right-info"  style="margin-top: 40px;">
+            <ul>
+              <li>
+                <h6>Email Address</h6>
+                <span>medibid@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="right-info" style="margin-top: 40px;">
+            <ul>
+              <li>
+                <h6>Website URL</h6>
+                <span>www.meeting.edu</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+  <div class="footer" id="footer">
+    <p>Copyright © 2023 Medibid Co., Ltd. All Rights Reserved. 
+        
+  </div>
+</section>
+
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/lightbox.js"></script>
+  <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/video.js"></script>
+  <script src="assets/js/slick-slider.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script>
+      //according to loftblog tut
+      $('.nav li:first').addClass('active');
+
+      var showSection = function showSection(section, isAnimate) {
+        var
+        direction = section.replace(/#/, ''),
+        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+        reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $('body, html').animate({
+            scrollTop: reqSectionPos },
+          800);
+        } else {
+          $('body, html').scrollTop(reqSectionPos);
+        }
+
+      };
+
+      var checkSection = function checkSection() {
+        $('.section').each(function () {
+          var
+          $this = $(this),
+          topEdge = $this.offset().top - 80,
+          bottomEdge = topEdge + $this.height(),
+          wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var
+            currentId = $this.data('section'),
+            reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+            reqLink.closest('li').addClass('active').
+            siblings().removeClass('active');
+          }
+        });
+      };
+
+      $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+        e.preventDefault();
+        showSection($(this).attr('href'), true);
+      });
+
+      $(window).scroll(function () {
+        checkSection();
+      });
+  </script>
+</body>
+
+</body>
+</html>

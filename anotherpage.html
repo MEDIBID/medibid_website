@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+ 
+
+  <title>MEDIBID</title>
+  <style>
+
+h1,h2,h3,h4,h5,p{
+  color: #0b0b0b;
+}
+:root{
+  background-color: #ffffff;
+}
+  body{
+    background-color: #ffffff;
+    border: 4px solid #0bb9c5;
+  }
+  .popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 40%;
+  height: 478px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+}
+.popup-container img {
+  width: 40%; /* Set the desired width */
+  height: 306px; /* Maintain aspect ratio */
+  margin-top: 30px;
+  margin-left: -279px;
+  border: 2px solid #d2dbdc;
+}
+
+.popup-container h3 {
+  margin-top: -9px;
+  color: #0bb9c5;
+  margin-left: 24px;
+}
+
+.popup-container h4 {
+  margin-top: 176px;
+  color: #000000;
+  text-align: left;
+}
+
+.price_css {
+  margin-top: -293px;
+  margin-bottom: 20px;
+  color: #000000;
+  text-align: center;
+  margin-right: -250px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  height: 42px;
+  margin-top: 20px;
+  border: 2px solid #0bb9c5;
+  color: #0bb9c5;
+  margin-right: -169px;
+}
+
+.mqty_btn {
+  background-color: #0bb9c5;
+  border: none;
+  padding: 7px 13px;
+  color: white;
+}
+
+.pqty_btn {
+  background-color: #0bb9c5;
+  border: none;
+  padding: 7px 12px;
+  color: white;
+}
+
+.button-container h6 {
+  flex: 1;
+  margin-left: 11px;
+  color: #000;
+  background-color: #fff;
+}
+.type-element {
+  margin-left:410px;
+  margin-top: -25px;
+}
+.reserve_btn {
+  margin-top: -90px;
+  background-color: #0bb9c5;
+  color: white;
+  width: 208px;
+  height: 46px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: -272px;
+  font-size: medium;
+}
+
+.close_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.close_btn:before,
+.close_btn:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: black;
+}
+
+.close_btn:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close_btn:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+  .shop-button {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px; /* Add margin at the bottom */
+  margin-top: 10px; /* Add margin at the top */
+  width: 100%;
+  height: 150px;
+  display: grid;
+  row-gap: -7px;
+  border: none;
+  column-gap: 184px;
+}
+
+
+h5:hover {
+  color: #0bb9c5;
+}
+
+.shop-image {
+  margin-top: 30px;
+  width: 10%;
+  margin-left: 257px;
+
+}
+
+
+
+
+.shop-details h5
+.shop-details p {
+  color: #0b0b0b;
+  
+}
+
+.shop-details p {
+  margin-top: 5px;
+  
+}
+#related {
+  
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,200px));
+  row-gap: 10px;
+  column-gap: 107px;
+  left: 80px;
+}
+
+.related-image {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  
+}
+
+.medicine-image{
+  width: 285px; /* Set the desired width */
+  height: auto; /* Maintain aspect ratio */
+  margin-left:337px;
+  margin-top: 190px;
+ 
+}
+.search-container {
+  position: absolute;
+  top: 100px;
+  left: 344px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 9999;
+  /* Remove 'margin-top' and 'margin-left' */
+}
+
+.search-value {
+  position: absolute;
+  font-size: 30px;
+  color: #000000;
+  margin-left: 417px;
+  text-align: center;
+  top: 230px; /* Adjut the value to set the desired fixed position */
+}
+
+
+
+
+
+
+
+.search-input {
+  
+  flex: 1;
+  padding: 6px;
+  border: 3px solid #0bb9c5;
+  outline: none;
+  border-radius: 20px;
+  width: 640px;
+  height: 36px;
+}
+
+
+.search-button {
+ position: absolute;
+  right: 5px;
+  top: 23px;
+  margin-top: 0px;
+  transform: translateY(-50%);
+  padding: 5px 13px;
+  background-color: #0bb9c5;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#textRelatedProduct{
+  text-align: left;
+  margin-top: 100px;
+  border-top: 2px solid #0bb9c5;
+  padding-top: 10px;
+  margin-top: 10px;
+  color: #6b6969;
+}
+
+.shop-details button {
+  background-color: #0bb9c5;
+  color: white;
+  width: 94px;
+  height: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-right: 260px;
+  margin-top: -64px;
+  font-size: medium;
+}
+#login-bar{
+  background-color: #0bb9c5;
+  
+}
+#getLocation{
+  margin-left: 1300px;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  width: 630px;
+  height: 442px;
+  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  
+}
+form {
+  margin-top: 25px;
+  margin-left: 108px;
+}
+#verificationCode{
+  width: 160px;
+  
+}
+.popup button {
+  padding: 6px 10px;
+  font-size: 11px;
+  background-color: #0bb9c5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #0bb9c5;
+}
+.popup h4{
+  color: #000000;
+  
+}
+#recaptcha-container {
+  margin-bottom: 10px;
+}
+  </style>
+</head>
+
+  
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://icons.getbootstrap.com/" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    
+
+
+  </head>
+
+<body>
+  
+
+  <div class="login-bar" id="login-bar">
+    <a style="color: white;" href="index.html" id="getLocation">LOCATION</a>&nbsp;&nbsp;
+    <a style="color: white;" href="#" id="usernameText">LOGIN</a>&nbsp;&nbsp;
+  
+    <div id="loginPopup" class="popup" style="display: none;">
+      <form id="loginForm">
+        <br><br>
+        <h4>Enter number to create an account</h4>
+        <input type="text" id="number" placeholder="+91**********">
+        <div id="recaptcha-container"></div>
+        <button type="button" onclick="phoneAuth();">Send Code</button>
+        <br><br>
+        <h4>Enter Verification code</h4>
+        <input type="text" id="verificationCode" placeholder="Enter code">
+        <button type="button" onclick="codeVerify();">Verify Code</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- ***** Header Area Start ***** -->
+  <header  style="background-color:#ffffff" class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a  style="color: #0bb9c5;" href="index.html" class="logo">
+                          MEDIBID
+                      </a>
+                      <!-- ***** Menu Start ***** -->
+                  </nav>   
+                    
+                  <div id="search-container" class="search-container">
+                    <input type="text" id="searchData" class="search-input" placeholder="Search for medicine...">
+                    <a  class="search-button" id="search-button"><i class="bi bi-search"></i></a>
+                  </div>
+                  
+                       
+                        <div id="medicineImage"></div>
+                        <br><br>
+                        <div><h5 id="textRelatedProduct">Buying Options</h5></div>
+                      <div  id="medicalShopDetails">
+                       
+                      </div>
+                      
+                      <br><br>
+                    <div><h5 id="textRelatedProduct">Related Products</h5></div><br>
+                    <div id="related"></div>
+                    
+              </div>
+          </div>
+      </div>
+      
+  </header>
+  
+  
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/awesomplete@1.1.3/awesomplete.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mysql/2.18.1/mysql.js"></script>
+ 
+  
+
+  <script>
+    function loadScript(url, callback) {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+
+      if (script.readyState) {  // IE
+        script.onreadystatechange = function () {
+          if (script.readyState === "loaded" || script.readyState === "complete") {
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+      } else {  // Other browsers
+        script.onload = function () {
+          callback();
+        };
+      }
+
+      script.src = url;
+      document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+   
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyBr6DfSQdrr8nj7l5_zJXZhKJMk1puWbR0",
+  authDomain: "fir-73e54.firebaseapp.com",
+  databaseURL: "https://fir-73e54-default-rtdb.firebaseio.com",
+  projectId: "fir-73e54",
+  storageBucket: "fir-73e54.appspot.com",
+  messagingSenderId: "578007925758",
+  appId: "1:578007925758:web:df4216c180067bc3dd76af",
+  measurementId: "G-BBB402HQTG"
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+
+var searchData = document.getElementById('searchData');  
+var searchInput = getParameterByName('search');
+searchData.value = searchInput;
+
+
+const searchButton = document.getElementById('search-button');
+const medicalShopDetails = document.getElementById('medicalShopDetails');
+const relatedElement = document.getElementById('related');
+const medicineImage = document.getElementById('medicineImage');
+let updatedPrice;
+
+function showPopup(searchValue, shopName, price, qty, email,shopid) {
+  // Create the popup container
+  const popupContainer = document.createElement('div');
+  popupContainer.classList.add('popup-container');
+
+  // Create the overlay element
+  const overlayElement = document.createElement('div');
+  overlayElement.classList.add('overlay');
+  document.body.appendChild(overlayElement);
+
+  // Retrieve data from the Realtime Database
+  database
+    .ref('medical record')
+    .once('value')
+    .then((snapshot) => {
+      let medicineNode = null;
+
+      // Create an element to display the shop name
+      const shopNameElement = document.createElement('h3');
+      shopNameElement.textContent = shopid.Name;
+      popupContainer.appendChild(shopNameElement);
+
+      // Find the medicine node that matches the search value
+      snapshot.forEach((childSnapshot) => {
+        const node = childSnapshot.val();
+        if (Object.keys(node).includes(searchValue)) {
+          medicineNode = node;
+        }
+      });
+
+      // Display the image of the search value if available
+      if (medicineNode && medicineNode[searchValue]) {
+        const record = medicineNode[searchValue];
+        if (record.image) {
+          const imgElement = document.createElement('img');
+          imgElement.src = record.image;
+          imgElement.alt = `${searchValue.toUpperCase()} Image`;
+          popupContainer.appendChild(imgElement);
+        }
+      }
+
+      // Create the price element
+      const priceElement = document.createElement('h2');
+      priceElement.textContent = `Price: ${price}`;
+      priceElement.classList.add('price_css');
+      popupContainer.appendChild(priceElement);
+
+      // Create the button container
+      const buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('button-container');
+
+      // Create the minus button element
+      const minButtonElement = document.createElement('button');
+      minButtonElement.textContent = '-';
+      minButtonElement.classList.add('mqty_btn');
+      buttonContainer.appendChild(minButtonElement);
+
+      // Create the quantity element
+      const qtyElement = document.createElement('h6');
+      qtyElement.textContent = '1';
+      buttonContainer.appendChild(qtyElement);
+
+      // Create the plus button element
+      const plusButtonElement = document.createElement('button');
+      plusButtonElement.textContent = '+';
+      plusButtonElement.classList.add('pqty_btn');
+      buttonContainer.appendChild(plusButtonElement);
+
+      // Append the button container to the popup container
+      popupContainer.appendChild(buttonContainer);
+
+      // Retrieve the type value from medicineNode[searchValue]
+      const typeValue = medicineNode[searchValue].type;
+
+      // Create an element to display the type value
+      const typeElement = document.createElement('p');
+      typeElement.textContent = typeValue;
+      typeElement.classList.add('type-element'); // Add the CSS class
+      popupContainer.appendChild(typeElement);
+
+      // Create an element to display the search value
+      const searchValueElement = document.createElement('h4');
+      searchValueElement.textContent = searchValue;
+      popupContainer.appendChild(searchValueElement);
+
+      // Create a Reserve button element
+      const reserveElement = document.createElement('button');
+      reserveElement.textContent = 'Reserve';
+      reserveElement.classList.add('reserve_btn');
+      popupContainer.appendChild(reserveElement);
+
+      // Create a Close button element
+      const closeButtonElement = document.createElement('button');
+      closeButtonElement.classList.add('close_btn');
+      popupContainer.appendChild(closeButtonElement);
+
+      // Append the popup container to the document body
+      document.body.appendChild(popupContainer);
+
+      // Initialize the updatedPrice variable
+      
+
+      // Retrieve the price value
+      const priceValue = parseFloat(price.replace(/[^0-9.]/g, ''));
+      updatedPrice=priceValue ;
+      // Increase the quantity when plusButton is clicked
+      plusButtonElement.addEventListener('click', () => {
+        let quantity = parseInt(qtyElement.textContent);
+        if (quantity < qty) {
+          quantity++;
+          qtyElement.textContent = quantity;
+          // Update the price based on the new quantity
+          updatedPrice = (priceValue * quantity).toFixed(2);
+          priceElement.textContent = `Price:₹${updatedPrice}`;
+        }
+      });
+
+      // Decrease the quantity when minButton is clicked
+      minButtonElement.addEventListener('click', () => {
+        let quantity = parseInt(qtyElement.textContent);
+        if (quantity > 1) {
+          quantity--;
+          qtyElement.textContent = quantity;
+          updatedPrice = (priceValue * quantity).toFixed(2);
+          priceElement.textContent = `Price:₹${updatedPrice}`;
+        }
+      });
+
+      // Close the popup when the closeButton is clicked
+      closeButtonElement.addEventListener('click', () => {
+        document.body.removeChild(popupContainer);
+        document.body.removeChild(overlayElement);
+        document.body.style.overflow = 'auto';
+      });
+  
+      // Reserve button click event
+      reserveElement.addEventListener('click', () => {
+        const quantity = parseInt(qtyElement.textContent);
+        if (usernameText.textContent === 'PROFILE' && quantity > 0) {
+          const reservationRef = database.ref('reservation');
+
+          // Retrieve the current quantity of the product from Firebase
+ 
+         
+  if (shopid && shopid.product && shopid.product.hasOwnProperty(searchValue)) {
+    var updatedQty=0;
+    var currentQt=0;
+  // Find the matching product within the shopid object
+  const productNode = shopid.product[searchValue];
+  currentQty = productNode.qty;
+  updatedQty = currentQty - quantity;
+  console.log(updatedQty,currentQty)
+
+  if (updatedQty >= 0) {
+    // Update the quantity in the shopid object
+    productNode.qty = updatedQty;
+
+    // Check if the email matches the shopid email
+    const database = firebase.database();
+    const medicalStoreRef = database.ref('medical store');
+
+    medicalStoreRef.once('value')
+      .then((snapshot) => {
+        const medicalStoreData = snapshot.val();
+        const matchingKeys = Object.keys(medicalStoreData).filter((key) => {
+          return medicalStoreData[key].email === shopid.email;
+        });
+
+        if (matchingKeys.length > 0) {
+  matchingKeys.forEach((matchingKey) => {
+    const productData = medicalStoreData[matchingKey].product;
+    if (productData && productData.hasOwnProperty(searchValue)) {
+      const productRef = database.ref(`medical store/${matchingKey}/product/${searchValue}`);
+      
+      // Get the current quantity from the database
+      const previousQty = productData[searchValue].qty;
+      
+      // Update the quantity to the new value (e.g., decreasedQty)
+      productRef.update({ qty: updatedQty })
+        .then(() => {
+          console.log('Quantity successfully updated in the database');
+          // Code for handling success or performing additional actions
+        })
+        .catch((error) => {
+          console.error('Error updating quantity in the database:', error);
+          // Code for handling errors
+        });
+
+     
+    }
+  });
+}
+else {
+          console.error('No matching keys found in the medical store for the given email.');
+          // Code for handling no matching keys case
+        }
+      })
+      .catch((error) => {
+        console.error('Error retrieving data from the medical store:', error);
+        // Code for handling errors
+      });
+  } else {
+    console.error('Insufficient quantity available for reservation.');
+    // Code for handling insufficient quantity case
+  }
+} else {
+  console.error('Product not found in the shopid object.');
+  // Code for handling product not found case
+}
+
+
+     const newReservation = reservationRef.push();
+
+          // Get the current date and time
+          const currentDate = new Date();
+          const formattedDate = currentDate.toISOString().slice(0, 10);
+          const formattedTime = currentDate.toLocaleTimeString();
+          
+    // Get the current timestamp
+    const reservationTimestamp = currentDate.getTime();
+          // Create the reservation data object
+          const reservationData = {
+            shopName:shopid.Name,
+            place:shopid.place,
+            shopId: email,
+            medicineName: searchValue,
+            phNo: mobileNumber,
+            price: `₹${updatedPrice}`,
+            qty: quantity,
+            date: formattedDate,
+            time: formattedTime,
+           timestamp: reservationTimestamp, // Store the reservation timestamp
+          };
+
+          // Save the reservation data to Firebase
+          newReservation
+            .set(reservationData)
+            .then(() => {
+              // Push a status node with "not purchased"
+              newReservation.child('status').set('pending');
+
+              alert('Successfully Reserved Product for next 24hr');
+              // Perform any additional actions or display success message
+
+              // Close the popup
+              document.body.removeChild(popupContainer);
+              document.body.removeChild(overlayElement);
+              document.body.style.overflow = 'auto';
+            })
+            .catch((error) => {
+              console.error('Error adding reservation to Firebase:', error);
+              // Handle the error case
+            });
+        } else{
+          alert('Please Login to reserve');
+          document.body.removeChild(popupContainer);
+          document.body.removeChild(overlayElement);
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+
+  // Apply fade effect to the remaining screen
+  document.body.style.overflow = 'hidden';
+}
+
+
+//end of popup
+
+//when search product using search bar
+function SearchContainer() {
+  const searchValue = searchData.value.toLowerCase();
+  // Retrieve data from the Realtime Database
+  database.ref('medical record').once('value')
+    .then((snapshot) => {
+      let medicineNode = null;
+
+      // Find the medicine node that matches the search value
+      snapshot.forEach((childSnapshot) => {
+        const node = childSnapshot.val();
+        if (Object.keys(node).includes(searchValue)) {
+          medicineNode = node;
+        }
+      });
+
+      // Clear previous results
+      medicalShopDetails.innerHTML = '';
+      relatedElement.innerHTML = '';
+      medicineImage.innerHTML = '';
+      
+
+      var type;
+      // Display the image of the search value if available
+      if (medicineNode && medicineNode[searchValue]) {
+        const record = medicineNode[searchValue];
+        type=record.type;
+        if (record.image) {
+          const imgElement = document.createElement('img');
+          imgElement.src = record.image;
+          imgElement.alt = `${searchValue.toUpperCase()} Image`;
+          imgElement.classList.add('medicine-image');
+          medicineImage.appendChild(imgElement);
+
+          
+    const searchValueText = document.createElement('searchValue');
+    searchValueText.textContent = searchValue.toUpperCase();
+    searchValueText.classList.add('search-value');
+    medicineImage.insertBefore(searchValueText, imgElement);
+        } 
+      } 
+      
+      // Function to handle click on related product
+      function handleRelatedProductClick(product) {
+        // Logic for handling related product click
+      }
+      const resultShop = nearbyMedicalShops.filter(shop => {
+  if (shop.product) {
+    const productKeys = Object.keys(shop.product);
+    return productKeys.includes(searchValue);
+  }
+  return false;
+});
+
+      if (resultShop && resultShop.length > 0) {
+  resultShop.forEach(shop => {
+    const shopElement = document.createElement('button');
+    shopElement.classList.add('shop-button');
+
+    // Create an element for the shop image
+    const imageElement = document.createElement('img');
+    imageElement.src = shop.image;
+    imageElement.alt = shop.Name;
+    imageElement.classList.add('shop-image');
+    shopElement.appendChild(imageElement);
+
+    // Create a container for the shop details
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('shop-details');
+    
+    //price
+    var price;
+    var qty;
+   
+
+for (const product in shop.product) {
+  if (product === searchData.value) {
+    const priceContainer = document.createElement('div'); // Create a container for price and type
+    priceContainer.classList.add('price-container');
+
+    const priceElement = document.createElement('h3');
+    priceElement.textContent = `₹${shop.product[product].price}`;
+    priceContainer.appendChild(priceElement);
+    detailsContainer.appendChild(priceContainer);
+
+    price = priceElement.textContent;
+    qty = shop.product[product].qty;
+  }
+}
+
+
+
+
+
+
+    
+    // Create an element to display the shop name
+    const nameElement = document.createElement('h5');
+    nameElement.textContent = shop.Name;
+    detailsContainer.appendChild(nameElement);
+
+    // Create an element to display the shop address
+    const addressElement = document.createElement('p');
+    addressElement.textContent = `Address: ${shop.address}`;
+    detailsContainer.appendChild(addressElement);
+     
+   // Create a button element for the shop
+   const buttonElement = document.createElement('button');
+    buttonElement.textContent = 'Reserve';
+    buttonElement.classList.add('shop-button');
+    detailsContainer.appendChild(buttonElement);
+    buttonElement.addEventListener('click', () => {
+    // Show the popup or perform desired action
+    
+   showPopup(searchData.value, shop.Name,price,qty,shop.email,shop)
+  
+  });
+    
+  // Create an element for the Google Maps link
+  const mapLinkElement = document.createElement('a');
+  mapLinkElement.href = shop.map;
+  mapLinkElement.target = '_blank';
+  mapLinkElement.textContent = 'View on Google Maps';
+  mapLinkElement.classList.add('map-link');
+  detailsContainer.insertBefore(mapLinkElement, addressElement.nextSibling);
+
+    
+    // Add the details container to the shop element
+    shopElement.appendChild(detailsContainer);
+
+    // Append the shop element to the result container
+    resultContainer.appendChild(shopElement);
+  });
+
+
+  } 
+  
+  
+      // Display images of other medicine keys in the same medicine node
+      if (medicineNode) {
+        Object.keys(medicineNode).forEach((medicineKey) => {
+          if (medicineKey.toLowerCase() !== searchValue && medicineNode[medicineKey].image) {
+            const containerElement = document.createElement('div'); // Create a container element
+            containerElement.classList.add('related-item'); // Add a CSS class to the container
+
+            const imgElement = document.createElement('img');
+            imgElement.src = medicineNode[medicineKey].image;
+            imgElement.alt = `${medicineKey.toUpperCase()} Image`;
+            imgElement.classList.add('related-image');
+
+            const nameElement = document.createElement('h5');
+            nameElement.textContent = medicineKey;
+
+            containerElement.appendChild(imgElement);
+            containerElement.appendChild(nameElement);
+            relatedElement.appendChild(containerElement);
+
+            // Add onclick attribute to call handleRelatedProductClick with the product name
+            containerElement.setAttribute('onclick', `handleRelatedProductClick('${medicineKey}')`);
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      console.log('Error fetching data from Firebase:', error);
+    });
+}
+
+// Event listener for the search button click
+searchButton.addEventListener('click', function() {
+    SearchContainer(); // Call the function when the button is clicked
+  });
+
+// search by search bar end
+
+
+  
+//when render from first page
+
+
+
+  const nearbyMedicalShops = JSON.parse(localStorage.getItem('nearbyMedicalShops'));
+  const resultContainer = document.getElementById('medicalShopDetails');
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchInputValue = decodeURIComponent(urlParams.get('search'));
+  const selectedLocation = decodeURIComponent(urlParams.get('location')).toUpperCase();
+  console.log(nearbyMedicalShops)
+  // Retrieve the mobileNumber from localStorage
+const mobileNumber = localStorage.getItem('mobileNumber');
+
+
+
+  const username = localStorage.getItem("usernameText");
+
+  var resultElement = document.getElementById('getLocation');
+  resultElement.innerHTML = `${selectedLocation}`;
+  window.addEventListener('DOMContentLoaded', () => {
+  // Retrieve stored mobileNumber
+  const mobileNumber = localStorage.getItem('mobileNumber');
+  
+  // Check if mobileNumber exists and if the user is logged in
+  if (mobileNumber &&localStorage.getItem('isLoggedIn') === 'true') {
+    // Set the username text to "PROFILE"
+    document.getElementById('usernameText').textContent = 'PROFILE';
+  }
+});
+
+//profile or login
+const usernameText = document.getElementById('usernameText');
+const loginPopup = document.getElementById('loginPopup');
+let overlayElement; // Declare the overlayElement variable here
+
+usernameText.addEventListener('click', function(event) {
+  event.preventDefault();
+  if (usernameText.textContent === 'PROFILE') {
+    // Load profile.html
+    window.location.href = 'profile.html';
+  } else {
+    // Show login popup
+    loginPopup.style.display = 'block';
+    overlayElement = document.createElement('div');
+    overlayElement.classList.add('overlay');
+    document.body.appendChild(overlayElement);
+  }
+});
+
+window.addEventListener('click', function(event) {
+  if (event.target !== usernameText && event.target !== loginPopup && !loginPopup.contains(event.target)) {
+    loginPopup.style.display = 'none';
+    if (overlayElement) {
+      document.body.removeChild(overlayElement);
+      overlayElement = null; // Reset the overlayElement variable
+    }
+  }
+});
+
+
+  // Rest of your Firebase phone authentication code
+  window.onload = function() {
+    render();
+  };
+
+  function render() {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    recaptchaVerifier.render()
+      .catch(function(error) {
+        console.error('Error rendering reCAPTCHA:', error);
+      });
+  }
+
+  function phoneAuth() {
+    var number = document.getElementById('number').value;
+    firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier)
+      .then(function(confirmationResult) {
+        window.confirmationResult = confirmationResult;
+        console.log(confirmationResult);
+        alert('Message Sent');
+      })
+      .catch(function(error) {
+        console.error('Phone authentication error:', error);
+        alert(error.message);
+      });
+  }
+
+  function codeVerify() {
+    const code = document.getElementById('verificationCode').value;
+    const confirmationResult = window.confirmationResult;
+    confirmationResult.confirm(code)
+      .then(function(result) {
+        alert('Successfully Login');
+        var user = result.user;
+        console.log(user);
+
+        // Close the popup and change "LOGIN" to "PROFILE"
+        loginPopup.style.display = 'none';
+        document.body.removeChild(overlayElement);
+        usernameText.textContent = 'PROFILE';
+        localStorage.setItem('isLoggedIn', 'true');
+        if (usernameText.textContent === 'PROFILE') {
+          const mobileNumber = document.getElementById('number').value;
+          localStorage.setItem('mobileNumber', mobileNumber);
+          console.log(mobileNumber)
+        }
+      })
+      .catch(function(error) {
+        console.error('Verification code error:', error);
+        alert(error.message);
+      });
+  }
+
+//reserve or login
+
+// when related product is clicked
+function handleRelatedProductClick(product) {
+      const relatedProduct=product;
+     
+  const resultShop = nearbyMedicalShops.filter(shop => {
+  if (shop.product) {
+    const productKeys = Object.keys(shop.product);
+    return productKeys.includes(product);
+  }
+  return false;
+});
+
+  const medicalShopDetails = document.getElementById('medicalShopDetails');
+  medicalShopDetails.innerHTML = '';
+  
+  if (resultShop && resultShop.length > 0) {
+  resultShop.forEach(shop => {
+    
+    const shopElement = document.createElement('button');
+    shopElement.classList.add('shop-button');
+
+    // Create an element for the shop image
+    const imageElement = document.createElement('img');
+    imageElement.src = shop.image;
+    imageElement.alt = shop.Name;
+    imageElement.classList.add('shop-image');
+    shopElement.appendChild(imageElement);
+
+    // Create a container for the shop details
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('shop-details');
+    
+    //price
+    var price;
+    var qty;
+    
+    for (const product in shop.product) {
+        if (product === relatedProduct) {
+          const priceElement = document.createElement('h3');
+          priceElement.textContent = `₹${shop.product[product].price}`;
+          detailsContainer.appendChild(priceElement);
+          
+          price = priceElement.textContent;
+          qty=shop.product[product].qty;
+        }
+      }
+
+    
+    // Create an element to display the shop name
+    const nameElement = document.createElement('h5');
+    nameElement.textContent = shop.Name;
+    detailsContainer.appendChild(nameElement);
+
+    // Create an element to display the shop address
+    const addressElement = document.createElement('p');
+    addressElement.textContent = `Address: ${shop.address}`;
+    detailsContainer.appendChild(addressElement);
+   
+   // Create a button element for the shop
+   const buttonElement = document.createElement('button');
+    buttonElement.textContent = 'Reserve';
+    buttonElement.classList.add('shop-button');
+    detailsContainer.appendChild(buttonElement);
+    buttonElement.addEventListener('click', () => {
+    // Show the popup or perform desired action
+    
+  showPopup(relatedProduct, shop.Name,price,qty,shop.email,shop)
+
+    
+
+    
+  });
+    
+  // Create an element for the Google Maps link
+  const mapLinkElement = document.createElement('a');
+  mapLinkElement.href = shop.map;
+  mapLinkElement.target = '_blank';
+  mapLinkElement.textContent = 'View on Google Maps';
+  mapLinkElement.classList.add('map-link');
+  detailsContainer.insertBefore(mapLinkElement, addressElement.nextSibling);
+
+    
+    // Add the details container to the shop element
+    shopElement.appendChild(detailsContainer);
+
+    // Append the shop element to the result container
+    resultContainer.appendChild(shopElement);
+
+
+    });
+  }
+  
+  database.ref('medical record').once('value')
+    .then((snapshot) => {
+      let medicineNode = null;
+
+      // Find the medicine node that matches related product
+      medicineImage.innerHTML = ''
+      const imageElement = document.getElementById('medicineImage');
+      const relatedName = document.createElement('searchValue');
+      relatedName.classList.add('search-value');
+    relatedName.textContent = product;
+    imageElement.appendChild(relatedName);
+      snapshot.forEach((childSnapshot) => {
+        const node = childSnapshot.val();
+        if (Object.keys(node).includes(searchData.value.toLowerCase())) {
+          medicineNode = node;
+        }
+      });
+    
+
+      
+      // Display the image of searchData.value if available
+      if (medicineNode && medicineNode[product]) {
+        const record = medicineNode[product];
+        
+        if (record.image) {
+          const imgElement = document.createElement('img');
+          imgElement.src = record.image;
+          imgElement.alt = `${product} Image`;
+          imgElement.classList.add('medicine-image');
+          imageElement.appendChild(imgElement);
+        } else {
+          //imageElement.innerHTML = 'No image available.';
+        }
+        
+      } else {
+        //imageElement.innerHTML = 'Medicine not found.';
+      }
+     
+      // Function to handle click on related product
+  
+
+      // Display images of other medicine keys in the same medicine node
+      related.innerHTML=''
+      if (medicineNode) {
+  Object.keys(medicineNode).forEach((medicineKey) => {
+    if (medicineKey.toLowerCase() !== product && medicineNode[medicineKey].image) {
+      const containerElement = document.createElement('div'); // Create a container element
+      containerElement.classList.add('related-item'); // Add a CSS class to the container
+      
+      const imgElement = document.createElement('img');
+      imgElement.src = medicineNode[medicineKey].image;
+      imgElement.alt = `${medicineKey} Image`;
+      imgElement.classList.add('related-image');
+
+      const nameElement = document.createElement('h5');
+      nameElement.textContent = medicineKey;
+      
+      containerElement.appendChild(imgElement);
+      containerElement.appendChild(nameElement);
+      relatedElement.appendChild(containerElement);
+
+      // Add onclick attribute to call handleRelatedProductClick with the product name
+      containerElement.setAttribute('onclick', `handleRelatedProductClick('${medicineKey}')`);
+      
+    }
+  });
+}
+
+    })
+}
+
+  
+
+
+ 
+  const imageElement = document.getElementById('medicineImage');
+  // Create a paragraph element for displaying the search data
+const searchValueElement = document.createElement('searchValue');
+searchValueElement.textContent = searchData.value.toUpperCase();
+searchValueElement.classList.add('search-value');
+
+// Append the search value element below the medicine image
+imageElement.appendChild(searchValueElement);
+
+  //const relatedElement = document.getElementById('related');
+
+  database.ref('medical record').once('value')
+    .then((snapshot) => {
+      let medicineNode = null;
+
+      // Find the medicine node that matches searchData.value
+      snapshot.forEach((childSnapshot) => {
+        const node = childSnapshot.val();
+        if (Object.keys(node).includes(searchData.value.toLowerCase())) {
+          medicineNode = node;
+        }
+      });
+    
+
+      
+      // Display the image of searchData.value if available
+      if (medicineNode && medicineNode[searchData.value.toLowerCase()]) {
+        const record = medicineNode[searchData.value.toLowerCase()];
+        if (record.image) {
+          const imgElement = document.createElement('img');
+          imgElement.src = record.image;
+          imgElement.alt = `${searchData.value.toUpperCase()} Image`;
+          imgElement.classList.add('medicine-image');
+          imageElement.appendChild(imgElement);
+        } else {
+          //imageElement.innerHTML = 'No image available.';
+        }
+      } else {
+        //imageElement.innerHTML = 'Medicine not found.';
+      }
+     
+      // Function to handle click on related product
+  
+
+      // Display images of other medicine keys in the same medicine node
+      if (medicineNode) {
+  Object.keys(medicineNode).forEach((medicineKey) => {
+    if (medicineKey.toLowerCase() !== searchData.value.toLowerCase() && medicineNode[medicineKey].image) {
+      const containerElement = document.createElement('div'); // Create a container element
+      containerElement.classList.add('related-item'); // Add a CSS class to the container
+      
+      const imgElement = document.createElement('img');
+      imgElement.src = medicineNode[medicineKey].image;
+      imgElement.alt = `${medicineKey} Image`;
+      imgElement.classList.add('related-image');
+
+      const nameElement = document.createElement('h5');
+      nameElement.textContent = medicineKey;
+      
+      containerElement.appendChild(imgElement);
+      containerElement.appendChild(nameElement);
+      relatedElement.appendChild(containerElement);
+
+      // Add onclick attribute to call handleRelatedProductClick with the product name
+      containerElement.setAttribute('onclick', `handleRelatedProductClick('${medicineKey}')`);
+      
+    }
+  });
+}
+
+    })
+    .catch((error) => {
+      console.log('Error fetching data from Firebase:', error);
+    });
+
+
+
+    const resultShop = nearbyMedicalShops.filter(shop => {
+  if (shop.product) {
+    const productKeys = Object.keys(shop.product);
+    return productKeys.includes(searchInput);
+  }
+  return false;
+});
+
+   
+if (resultShop && resultShop.length > 0) {
+  resultShop.forEach(shop => {
+    const shopElement = document.createElement('button');
+    shopElement.classList.add('shop-button');
+
+    // Create an element for the shop image
+    const imageElement = document.createElement('img');
+    imageElement.src = shop.image;
+    imageElement.alt = shop.Name;
+    imageElement.classList.add('shop-image');
+    shopElement.appendChild(imageElement);
+
+    // Create a container for the shop details
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('shop-details');
+    
+   var price;
+   var qty;
+    for (const product in shop.product) {
+        if (product === searchData.value) {
+          const priceElement = document.createElement('h3');
+          priceElement.textContent = `₹${shop.product[product].price}`;
+          detailsContainer.appendChild(priceElement);
+          price= priceElement.textContent;
+          qty=shop.product[product].qty;
+          
+        }
+      }
+     
+    
+    // Create an element to display the shop name
+    const nameElement = document.createElement('h5');
+    nameElement.textContent = shop.Name;
+    detailsContainer.appendChild(nameElement);
+
+    // Create an element to display the shop address
+    const addressElement = document.createElement('p');
+    addressElement.textContent = `Address: ${shop.address}`;
+    detailsContainer.appendChild(addressElement);
+   
+   // Create a button element for the shop
+   const buttonElement = document.createElement('button');
+    buttonElement.textContent = 'Reserve';
+    buttonElement.classList.add('shop-button');
+    detailsContainer.appendChild(buttonElement);
+    buttonElement.addEventListener('click', () => {
+    // Show the popup or perform desired action
+
+    showPopup(searchData.value, shop.Name,price,qty,shop.email,shop)
+    
+   
+  });
+    
+  // Create an element for the Google Maps link
+  const mapLinkElement = document.createElement('a');
+  mapLinkElement.href = shop.map;
+  mapLinkElement.target = '_blank';
+  mapLinkElement.textContent = 'View on Google Maps';
+  mapLinkElement.classList.add('map-link');
+  detailsContainer.insertBefore(mapLinkElement, addressElement.nextSibling);
+
+    
+    // Add the details container to the shop element
+    shopElement.appendChild(detailsContainer);
+
+    // Append the shop element to the result container
+    resultContainer.appendChild(shopElement);
+  });
+
+
+  } 
+
+  
+  const searchValue = document.getElementById('searchData');
+
+function populateSearchContainer() {
+  // Retrieve data from the Realtime Database
+  database.ref('medical record').once('value', (snapshot) => {
+    const searchData = [];
+
+    snapshot.forEach((childSnapshot) => {
+      const medicineNode = childSnapshot.val();
+      Object.keys(medicineNode).forEach((medicineKey) => {
+        const lowercaseMedicineKey = medicineKey.toLowerCase();
+        searchData.push(lowercaseMedicineKey);
+      });
+    });
+
+    // Initialize Awesomplete on the search input element
+    const awesomplete = new Awesomplete(searchValue, {
+      list: searchData,
+      minChars: 1, // Minimum number of characters required to show suggestions
+    });
+
+    // Update suggestions as you type
+    searchValue.addEventListener('input', () => {
+      const inputText = searchValue.value.toLowerCase();
+      const filteredData = searchData.filter((item) =>
+       item.toLowerCase().includes(inputText)
+      );
+      awesomplete.list = filteredData;
+    });
+  }, (error) => {
+    console.log('Error fetching data from Firebase:', error);
+  });
+}
+
+populateSearchContainer();
+function getParameterByName(name) {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(window.location.href);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+
+
+  </script>
+</body>
+</html>
